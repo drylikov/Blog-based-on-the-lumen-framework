@@ -1,0 +1,13 @@
+/vendor
+/.idea/
+/.idea/php.xml
+/node_modules
+Homestead.json
+Homestead.yaml
+.env
+/laradock
+storage/.php_cs.cache
+
+# cs-fixer
+.php_cs
+.php_cs.cache

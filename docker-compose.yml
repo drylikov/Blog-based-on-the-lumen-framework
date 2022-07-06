@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-9.6.10}-alpine
+    restart: on-failure
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: forge
+      POSTGRES_PASSWORD: secret
+    ports:
+      - 5432
+      - '9003:5432'
+
+  app:
+    build:
+      context: ./
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "9000:9000"
+    links:
+      - postgres
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 9001:80
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+    links:
+      - app
+    depends_on:
+      - app
+
+networks:
+  default:

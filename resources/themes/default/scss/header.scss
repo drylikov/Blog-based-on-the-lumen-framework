@@ -1,0 +1,40 @@
+.navbar-brand img {
+    width: 80px;
+    height: 80px;
+}
+
+.navbar {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin: 10px 0 0 0;
+
+    img {
+        @media(max-width: 700px) {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.navbar-toggler {
+    @media(max-width: 700px) {
+        padding: 0;
+    }
+}
+
+.blog-info-header h3 small {
+    font-size: 45%;
+}
+
+.blog-info-header {
+    @media(max-width: 700px) {
+        font-size: 10px;
+
+        h3 {
+            font-size: 10px;
+        }
+    }
+}
